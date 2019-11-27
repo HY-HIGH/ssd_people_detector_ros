@@ -1,7 +1,15 @@
 
-# SSD_people_detector_with_ROS
-- SSD을 이용한 people_detector  
-- ROS를 통해 사람들의 위치정보를 주고받음 (토픽 퍼블리시)
+# SSD People Detector With ROS
+![detection](./)
+
+---
+## 설명
+- SSD(single shot multi detector)를 이용한 people_detector 
+- 카메라 노드의 토픽을 받아 SSD네트워크를 통과하고 사람들의 위치정보를 MsgState.msg 토픽으로 퍼블리시 한다. 
+ 
+
+
+
 ---
 ## 설치과정
 ### 1.ROS 설치
