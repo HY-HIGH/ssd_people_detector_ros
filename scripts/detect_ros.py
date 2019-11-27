@@ -27,7 +27,7 @@ from vision_msgs.msg import Detection2D, Detection2DArray, ObjectHypothesisWithP
 import object_detection
 from object_detection.utils import label_map_util
 from object_detection.utils import visualization_utils as vis_util
-from tensorflow_object_detector.msg import MsgState
+from ssd_people_detector_ros.msg import MsgState
 # SET FRACTION OF GPU YOU WANT TO USE HERE
 GPU_FRACTION = 0.4
 
