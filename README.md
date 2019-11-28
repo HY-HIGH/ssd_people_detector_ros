@@ -1,12 +1,24 @@
 
 # SSD People Detector With ROS
-![detection](./)
+- 네트워크 
+![network](./img/ssd.jpeg)
+
 
 ---
 ## 설명
 - SSD(single shot multi detector)를 이용한 people_detector 
 - 카메라 노드의 토픽을 받아 SSD네트워크를 통과하고 사람들의 위치정보를 MsgState.msg 토픽으로 퍼블리시 한다. 
- 
+- 퍼블리시 되는 토픽  MsgState.msg 는 다음과 같다.
+  ```python
+  float64 x_mid
+  float64 y_mid
+  float64 box_size
+  int32 box_count
+  ```
+  이를 그림으로 나타내면  
+
+  ![detection](./img/state.jpg)
+
 
 
 
@@ -14,39 +26,39 @@
 ## 설치과정
 ### 1.ROS 설치
 
->Install ROS: http://wiki.ros.org/kinetic/Installation/Ubuntu  
+    Install ROS: http://wiki.ros.org/kinetic/Installation/Ubuntu  
 
 ### 2.카메라 설치   
 
->sudo apt-get install ros-kinetic-usb-cam
+>~$ sudo apt-get install ros-kinetic-usb-cam
   
     kinetic 대신 자신의 버전 입력할 것
 
 ### 3.가상환경 설치 후 텐서플로우 설치
 
->sudo apt-get install python-pip python-dev python-virtualenv  
+>~$ sudo apt-get install python-pip python-dev python-virtualenv  
 
->virtualenv --system-site-packages ~/tensorflow  
+>~$ virtualenv --system-site-packages ~/tensorflow  
 
->source ~/tensorflow/bin/activate  
+>~$ source ~/tensorflow/bin/activate  
 
->easy_install -U pip  
+>~$ easy_install -U pip  
 
->pip install --upgrade tensorflow  
+>~$ pip install --upgrade tensorflow  
   
     설치가 안된다면 다른 방법으로 설치 해도 무관함
   
 ### 4.ROS 설정   
->mkdir ~/catkin_ws/ && mkdir ~/catkin_ws/src/
+>~$ mkdir ~/catkin_ws/ && mkdir ~/catkin_ws/src/
 ### 5.패키지 클론 vision_msgs 및 ssd_people_detector_ros 
->cd ~/catkin_ws/src
+>~$ cd ~/catkin_ws/src
 
->git clone https://github.com/HY-HIGH/vision_msgs.git  
+>~$ git clone https://github.com/HY-HIGH/vision_msgs.git  
 
->git clone https://github.com/HY-HIGH/ssd_people_detector_ros.git
+>~$ git clone https://github.com/HY-HIGH/ssd_people_detector_ros.git
 
 ### 6. ROS catkin make
->cd ~/catkin_ws && catkin_make
+>~$ cd ~/catkin_ws && catkin_make
      
 ### 7. ROS 설정
     ##다음 밑의 항목들을 .bashrc 에 추가 해준다.    
@@ -60,11 +72,11 @@
 --- 
 ## 사용방법
 ---
-### 터미널 을 연다.  
->at  
+### Terminal (ctrl+t)
+>~$ at  
 
     가상환경 tensorflow 로 변경
->rldetect
+>~$ rldetect
   
     ssd_people_detector_ros 실행
 ### 받는 카메라 이미지 토픽 변경
@@ -204,16 +216,18 @@ def visualize_boxes_and_labels_on_image_array(image,
   else:
     return (data) ,-1 ,-1 ,box_count, box_size
 
-
-
 ```
-## 참고
-1. Download any Object Detection Models from the Tensorflow Object detection API and place it in data/models/ . You
-can find the models in tensorflow Object Detection Model Zoo:
-https://github.com/tensorflow/models/blob/master/object_detection/g3doc/detection_model_zoo.md. Extract the tar.gz
-file.
-2. Edit the MODEL_NAME and LABEL_NAME in detect_ros.py. By default it is ssd_mobilenet_v1_coco_11_06_2017 with
-mscoco_label_map.pbtxt respectively.
 
-from.osrf/tensorflow_object_detector: Tensorflow Object Detector
+## 참고
+    직접 모델 수정시 다음 방법을 참고한다.
+
+      1. Download any Object Detection Models from the Tensorflow Object detection API and place it in data/models/ .   
+      You
+      can find the models in tensorflow Object Detection Model Zoo:
+      https://github.com/tensorflow/models/blob/master/object_detection/g3doc/detection_model_zoo.md. Extract the tar.gz
+      file.
+      2. Edit the MODEL_NAME and LABEL_NAME in detect_ros.py. By default it is ssd_mobilenet_v1_coco_11_06_2017 with
+      mscoco_label_map.pbtxt respectively.
+
+      from.osrf/tensorflow_object_detector: Tensorflow Object Detector
 
