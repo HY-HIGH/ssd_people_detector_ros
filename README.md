@@ -82,7 +82,7 @@
 >~$ rldetect
   
     ssd_people_detector_ros 실행
-### 받는 카메라 이미지 토픽 변경
+### 서브스크라이브 하는 카메라 이미지 토픽 변경
 - ssd_people_detector_ros 폴더내의 launch 폴더로 이동
 - usb_cam_detector.launch 파일을 수정한다
 - 아래와 같이 첫번째 노드의 ```<remap>``` 부분을 수정 해준다. 
