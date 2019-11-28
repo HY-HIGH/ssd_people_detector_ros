@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package>
-  <name>SSD_people_detector_with_ROS</name>
+  <name>ssd_people_detector_ros</name>
   <version>0.0.0</version>
   <description>The tensorflow_object_detector package</description>
 

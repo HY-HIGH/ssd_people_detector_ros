@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(SSD_people_detector_with_ROS)
+project(ssd_people_detector_ros)
 include(ExternalData)
 
 ## Compile as C++11, supported in ROS Kinetic and newer

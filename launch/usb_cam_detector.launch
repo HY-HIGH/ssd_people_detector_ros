@@ -1,5 +1,5 @@
 <launch>
-	<node pkg= "tensorflow_object_detector" name="detect_ros" type="detect_ros.py"  output="screen"> 
+	<node pkg= "ssd_people_detector_ros" name="detect_ros" type="detect_ros.py"  output="screen"> 
     <remap from="image" to="/usb_cam_node/image_raw"/>
     <!-- <remap from="image" to="/iitp_drone/camera_1/image_raw"/> -->
     <!-- 드론이용시 /iitp_drone/camera_1/image_raw -->
@@ -8,7 +8,10 @@
 
   <node pkg="usb_cam" type="usb_cam_node" name="usb_cam_node" output="screen">
     <param name="pixel_format" value="yuyv"/>
-    <param name="video_device" value="/dev/video0"/>
+    <param name="video_device" value="/dev/video1"/><!-- 외장 웹캠 이용시 -->
+    <param name="video_device" value="/dev/video0"/><!-- 내장 웹캠 이용시 -->
+    
+    
   </node>
 
   <node pkg="image_view" type="image_view" name="image_view">

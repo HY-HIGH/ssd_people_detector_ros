@@ -1,7 +1,10 @@
 
 # SSD People Detector With ROS
-- 네트워크 
+## 네트워크 
 ![network](./img/ssd.jpeg)
+
+      한장의 사진이 들어 가고 사람의 크기에 따라 7가지 피쳐맵이 적용되며   
+      결과적으로 검출된 박스의 class와 프레임상의 비율적 위치가 출력으로 나온다.
 
 
 ---
@@ -94,7 +97,11 @@
 
   <node pkg="usb_cam" type="usb_cam_node" name="usb_cam_node" output="screen">
     <param name="pixel_format" value="yuyv"/>
-    <param name="video_device" value="/dev/video0"/>
+    <!-- 외장 웹캠 이용시 -->
+    <param name="video_device" value="/dev/video1"/>
+    <!-- 내장 웹캠 이용시 -->
+    <!-- <param name="video_device" value="/dev/video0"/> -->
+    
   </node>
 
   <node pkg="image_view" type="image_view" name="image_view">
@@ -105,7 +112,9 @@
 ---
 ## 주요 코드 수정 사항
 ### 메인 실행 코드
-> cd ./scripts/detect_ros.py 
+> cd ./scripts  
+  
+    detect_ros.py 
 - 사람들의 위치정보를 박스 값으로 퍼블리시 해준다.
 ```python
 def visualize_boxes_and_labels_on_image_array(image,
