@@ -1,6 +1,11 @@
 
 # SSD People Detector With ROS
-## 네트워크 
+    작성일 2019년 11월 18일   
+    작성자 황인재
+
+    최종 수정 2019년 12월 8일 
+---
+## 0. 네트워크 
 ![network](./img/ssd.jpeg)
 
       한장의 사진이 들어 가고 사람의 크기에 따라 7가지 피쳐맵이 적용되며   
@@ -8,7 +13,7 @@
 
 
 ---
-## 설명
+## 1. 설명
 - SSD(single shot multi detector)를 이용한 people_detector 
 - 카메라 노드의 토픽을 받아 SSD네트워크를 통과하고 사람들의 위치정보를 MsgState.msg 토픽으로 퍼블리시 한다. 
 - 퍼블리시 되는 토픽  MsgState.msg 는 다음과 같다.
@@ -26,18 +31,18 @@
 
 
 ---
-## 설치과정
-### 1.ROS 설치
+## 2. 설치과정
+### 1)ROS 설치
 
     Install ROS: http://wiki.ros.org/kinetic/Installation/Ubuntu  
 
-### 2.카메라 설치   
+### 2)카메라 설치   
 
 >~$ sudo apt-get install ros-kinetic-usb-cam
   
     kinetic 대신 자신의 버전 입력할 것
 
-### 3.가상환경 설치 후 텐서플로우 설치
+### 3)가상환경 설치 후 텐서플로우 설치
 
 >~$ sudo apt-get install python-pip python-dev python-virtualenv  
 
@@ -51,19 +56,19 @@
   
     설치가 안된다면 다른 방법으로 설치 해도 무관함
   
-### 4.ROS 설정   
+### 4)ROS 설정   
 >~$ mkdir ~/catkin_ws/ && mkdir ~/catkin_ws/src/
-### 5.패키지 클론 vision_msgs 및 ssd_people_detector_ros 
+### 5)패키지 클론 vision_msgs 및 ssd_people_detector_ros 
 >~$ cd ~/catkin_ws/src
 
 >~$ git clone https://github.com/HY-HIGH/vision_msgs.git  
 
 >~$ git clone https://github.com/HY-HIGH/ssd_people_detector_ros.git
 
-### 6. ROS catkin make
+### 6) ROS catkin make
 >~$ cd ~/catkin_ws && catkin_make
      
-### 7. ROS 설정
+### 7) ROS 설정
     ##다음 밑의 항목들을 .bashrc 에 추가 해준다.    
     ##.bashrc 수정방법 <커맨드에 gedit ~/.bashrc 입력>
 
@@ -110,7 +115,7 @@
 </launch>
 ```
 ---
-## 주요 코드 수정 사항
+## 3. 주요 코드 수정 사항
 ### 메인 실행 코드
 > cd ./scripts  
   
@@ -227,7 +232,7 @@ def visualize_boxes_and_labels_on_image_array(image,
 
 ```
 
-## 참고
+## 4. 참고
     직접 모델 수정시 다음 방법을 참고한다.
 
       1. Download any Object Detection Models from the Tensorflow Object detection API and place it in data/models/ .   
